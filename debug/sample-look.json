@@ -1,0 +1,88 @@
+{
+  "name": "moe vkei goth anime emo girl  red hair",
+  "curator": {
+    "id": 2214493023,
+    "type": "User",
+    "name": "gikasx",
+    "hasVerifiedBadge": false
+  },
+  "assetHashId": 0,
+  "assets": [
+    {
+      "type": "Asset",
+      "assetType": "Shirt",
+      "order": null,
+      "id": 128046341468291
+    },
+    {
+      "type": "Asset",
+      "assetType": "HairAccessory",
+      "order": 13,
+      "id": 101870723205975
+    },
+    {
+      "type": "Asset",
+      "assetType": "Pants",
+      "order": null,
+      "id": 88013324744716
+    }
+  ],
+  "assetsIncludingBundleParts": [
+    {
+      "type": "Asset",
+      "assetType": "Shirt",
+      "order": null,
+      "id": 128046341468291
+    },
+    {
+      "type": "Asset",
+      "assetType": "HairAccessory",
+      "order": 13,
+      "id": 101870723205975
+    },
+    {
+      "type": "Asset",
+      "assetType": "Pants",
+      "order": null,
+      "id": 88013324744716
+    },
+    {
+      "type": "Asset",
+      "assetType": "LeftArm",
+      "order": null,
+      "id": 86499716
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightArm",
+      "order": null,
+      "id": 86499698
+    },
+    {
+      "type": "Asset",
+      "assetType": "Torso",
+      "order": null,
+      "id": 86499666
+    }
+  ],
+  "bundles": [
+    {
+      "type": "Bundle",
+      "isRecolorable": false,
+      "id": 239
+    }
+  ],
+  "createdTime": "2026-06-30T23:24:33.784Z",
+  "updatedTime": "2026-06-30T23:24:33.784Z",
+  "type": "Look",
+  "lookType": "Avatar",
+  "totalPrice": 70,
+  "totalValue": 70,
+  "owned": false,
+  "favoriteCount": 0,
+  "displayProperties": null,
+  "outfitId": 5487020201576605,
+  "priceRangeText": "Free-70",
+  "isFavorited": false,
+  "id": "6345086800276619653"
+}
