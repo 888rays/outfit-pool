@@ -1,88 +1,118 @@
 {
-  "name": "moe vkei goth anime emo girl  red hair",
+  "name": "Striped Shadow Dancer",
   "curator": {
-    "id": 2214493023,
+    "id": 1,
     "type": "User",
-    "name": "gikasx",
-    "hasVerifiedBadge": false
+    "name": "Roblox",
+    "hasVerifiedBadge": true
   },
   "assetHashId": 0,
   "assets": [
     {
       "type": "Asset",
-      "assetType": "Shirt",
+      "assetType": "Pants",
       "order": null,
-      "id": 128046341468291
+      "id": 16849852996
+    },
+    {
+      "type": "Asset",
+      "assetType": "WaistAccessory",
+      "order": null,
+      "id": 16743569150
     },
     {
       "type": "Asset",
       "assetType": "HairAccessory",
-      "order": 13,
-      "id": 101870723205975
+      "order": 11,
+      "id": 13291678384
     },
     {
       "type": "Asset",
-      "assetType": "Pants",
+      "assetType": "Shirt",
       "order": null,
-      "id": 88013324744716
+      "id": 6917630517
     }
   ],
   "assetsIncludingBundleParts": [
     {
       "type": "Asset",
-      "assetType": "Shirt",
-      "order": null,
-      "id": 128046341468291
-    },
-    {
-      "type": "Asset",
-      "assetType": "HairAccessory",
-      "order": 13,
-      "id": 101870723205975
-    },
-    {
-      "type": "Asset",
       "assetType": "Pants",
       "order": null,
-      "id": 88013324744716
+      "id": 16849852996
     },
     {
       "type": "Asset",
-      "assetType": "LeftArm",
+      "assetType": "WaistAccessory",
       "order": null,
-      "id": 86499716
+      "id": 16743569150
     },
     {
       "type": "Asset",
-      "assetType": "RightArm",
+      "assetType": "DynamicHead",
       "order": null,
-      "id": 86499698
+      "id": 14775830319
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightLeg",
+      "order": null,
+      "id": 14775830269
+    },
+    {
+      "type": "Asset",
+      "assetType": "LeftLeg",
+      "order": null,
+      "id": 14775830264
     },
     {
       "type": "Asset",
       "assetType": "Torso",
       "order": null,
-      "id": 86499666
+      "id": 14775830263
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightArm",
+      "order": null,
+      "id": 14775830261
+    },
+    {
+      "type": "Asset",
+      "assetType": "LeftArm",
+      "order": null,
+      "id": 14775830259
+    },
+    {
+      "type": "Asset",
+      "assetType": "HairAccessory",
+      "order": 11,
+      "id": 13291678384
+    },
+    {
+      "type": "Asset",
+      "assetType": "Shirt",
+      "order": null,
+      "id": 6917630517
     }
   ],
   "bundles": [
     {
       "type": "Bundle",
       "isRecolorable": false,
-      "id": 239
+      "id": 6470
     }
   ],
-  "createdTime": "2026-06-30T23:24:33.784Z",
-  "updatedTime": "2026-06-30T23:24:33.784Z",
+  "createdTime": "2024-06-17T12:53:35.435Z",
+  "updatedTime": "2025-05-21T00:48:52.576Z",
   "type": "Look",
   "lookType": "Avatar",
-  "totalPrice": 70,
-  "totalValue": 70,
+  "totalPrice": 305,
+  "totalValue": 305,
   "owned": false,
   "favoriteCount": 0,
   "displayProperties": null,
-  "outfitId": 5487020201576605,
-  "priceRangeText": "Free-70",
+  "outfitId": 149614117885,
+  "priceRangeText": "5-305",
   "isFavorited": false,
-  "id": "6345086800276619653"
+  "id": "5751964983775461468"
 }
