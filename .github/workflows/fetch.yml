@@ -1,14 +1,13 @@
 name: Fetch outfits
 
 on:
+  schedule:
+    - cron: "23 */2 * * *" # every 2 hours: the avatars page shows new results over time
   workflow_dispatch:
     inputs:
-      target:
-        description: "How many outfits to keep in the pool"
-        default: "2000"
-      keywords:
-        description: "Optional: your own comma-separated keywords (leave empty for the built-in emo/goth list)"
-        default: ""
+      per_gender:
+        description: "Best outfits to keep per gender (male / female)"
+        default: "1000"
 
 permissions:
   contents: write
@@ -22,17 +21,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch outfits from the avatars page
+      - name: Find and score outfits
         run: node fetch.mjs
         env:
           ROBLOX_COOKIE: ${{ secrets.ROBLOX_COOKIE }}
-          POOL_TARGET: ${{ github.event.inputs.target }}
-          KEYWORDS: ${{ github.event.inputs.keywords }}
+          PER_GENDER: ${{ github.event.inputs.per_gender || '1000' }}
 
-      - name: Save the pool to the repo
+      - name: Save to the repo
+        if: always()
         run: |
           git config user.name "outfit-pool-bot"
           git config user.email "outfit-pool-bot@users.noreply.github.com"
-          git add pool.json status.json debug
-          git diff --cached --quiet || git commit -m "Update outfit pool"
+          git add pool.json status.json candidates.json items.json seen.json debug
+          git diff --cached --quiet && exit 0
+          git commit -m "Update outfit pool"
+          git pull --rebase
           git push
