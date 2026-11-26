@@ -131,6 +131,12 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 let csrfToken = '';
 class FatalError extends Error {}
 
+// Each run stops itself after BUDGET_MIN minutes and saves; the next run continues where it left off.
+const STARTED = Date.now();
+const BUDGET_MS = (Number(process.env.BUDGET_MIN) || 22) * 60000;
+const outOfTime = () => Date.now() - STARTED > BUDGET_MS;
+const throttled = {}; // 429 count per endpoint, saved in status.json
+
 // One request with Roblox's CSRF handshake; retries throttling/server errors. The cookie is never printed.
 async function request(url, options = {}, attempt = 1) {
 	const headers = {
@@ -155,11 +161,16 @@ async function request(url, options = {}, attempt = 1) {
 	if (response.status === 401) {
 		throw new FatalError('The login cookie expired or is invalid (401). Get a fresh cookie from the spare account and update ROBLOX_COOKIE.');
 	}
-	if ((response.status === 429 || response.status >= 500) && attempt <= 4) {
-		return sleep((response.status === 429 ? 20000 : 4000) * attempt).then(() => request(url, options, attempt + 1));
+	if (response.status === 429) {
+		const endpoint = url.split('?')[0].replace('https://', '');
+		throttled[endpoint] = (throttled[endpoint] || 0) + 1;
+	}
+	if ((response.status === 429 || response.status >= 500) && attempt <= 3 && !outOfTime()) {
+		const retryAfter = Number(response.headers.get('retry-after')) || 0;
+		return sleep(Math.min(60, retryAfter || 5 * attempt) * 1000).then(() => request(url, options, attempt + 1));
 	}
 	const text = await response.text();
-	if (!response.ok) throw new Error(`${response.status} from ${url.split('?')[0]}: ${text.slice(0, 200)}`);
+	if (!response.ok) throw Object.assign(new Error(`${response.status} from ${url.split('?')[0]}: ${text.slice(0, 200)}`), { status: response.status });
 	return JSON.parse(text);
 }
 
@@ -177,7 +188,7 @@ const hydrate = (lookIds) => request(`${WIDGETS}/hydrate`, {
 	body: JSON.stringify({ Content: lookIds.map((id) => ({ id, type: 'Look' })) }),
 }).then((data) => data.hydratedContent || []);
 
-// Item details (favorites + names) for "a123"/"b456" keys. Splits a batch if Roblox rejects it.
+// Item details (favorites + names) for "a123"/"b456" keys. Splits a batch only if Roblox rejects its contents (400).
 async function details(keys, items, today) {
 	try {
 		const data = await request(DETAILS, {
@@ -191,7 +202,7 @@ async function details(keys, items, today) {
 		}
 		return data.data?.[0];
 	} catch (error) {
-		if (error instanceof FatalError || keys.length === 1) throw error;
+		if (error.status !== 400 || keys.length === 1) throw error;
 		const half = keys.length >> 1;
 		await details(keys.slice(0, half), items, today);
 		return details(keys.slice(half), items, today);
@@ -218,7 +229,8 @@ export async function main() {
 	const items = await load('items.json', {});
 	const seen = new Set(await load('seen.json', []));
 	let cands = await load('candidates.json', null);
-	const status = { lastRun: new Date().toISOString(), searches: QUERIES.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, warnings: [] };
+	const status = { lastRun: new Date().toISOString(), searches: QUERIES.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, itemsLeft: 0, throttled, minutes: {}, warnings: [] };
+	const phase = (name) => { status.minutes[name] = Math.round((Date.now() - STARTED) / 6000) / 10; console.log(`[${status.minutes[name]} min] ${name}`); };
 	const debug = {};
 
 	// First v2 run: keep the on-theme outfits the old fetcher already found
@@ -241,15 +253,20 @@ export async function main() {
 		await writeFile('items.json', JSON.stringify(items));
 		await writeFile('seen.json', JSON.stringify([...seen]));
 		await writeFile('pool.json', JSON.stringify({ updated: status.lastRun, count: outfits.length, male: pool.M.length, female: pool.F.length, unsure: pool.U.length, outfits }));
+		status.warnings = status.warnings.slice(-30);
 		await writeFile('status.json', JSON.stringify(status, null, 2));
 		await mkdir('debug', { recursive: true });
 		for (const [name, value] of Object.entries(debug)) await writeFile(`debug/${name}.json`, JSON.stringify(value, null, 2).slice(0, 20000));
 	};
 
+	// If GitHub stops the job, save what we have first
+	for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => save().finally(() => process.exit(1)));
+
 	try {
 		// 1) Search
 		const pending = new Set();
 		for (const query of QUERIES) {
+			if (outOfTime()) break;
 			try {
 				let fresh = 0;
 				for (const id of await searchLooks(query)) if (!seen.has(id) && !pending.has(id)) { pending.add(id); fresh++; }
@@ -263,10 +280,11 @@ export async function main() {
 		}
 		if (status.searchesOk === 0) throw new FatalError('Every search failed. Roblox may have changed the avatars page API. Nothing was changed.');
 		status.newLooks = pending.size;
+		phase('searched');
 
-		// 2) Hydrate new looks; keep the on-theme ones
+		// 2) Hydrate new looks; keep the on-theme ones (unhydrated ones are found again next run)
 		const ids = [...pending];
-		for (let i = 0; i < ids.length; i += HYDRATE_BATCH) {
+		for (let i = 0; i < ids.length && !outOfTime(); i += HYDRATE_BATCH) {
 			const batch = ids.slice(i, i + HYDRATE_BATCH);
 			try {
 				for (const look of await hydrate(batch)) {
@@ -283,6 +301,8 @@ export async function main() {
 			}
 			await sleep(250);
 		}
+		phase('hydrated');
+		await save();
 
 		// 3) Favorites + names for new items, and re-check stale ones
 		const missing = new Set();
@@ -292,7 +312,10 @@ export async function main() {
 			for (const id of cand.b) { const k = `b${id}`; if (!items[k]) missing.add(k); }
 		}
 		const toCheck = [...missing, ...[...new Set(stale)].slice(0, REFRESH_LIMIT)];
+		let detailsDelay = 500;
 		for (let i = 0; i < toCheck.length; i += DETAILS_BATCH) {
+			if (outOfTime()) { status.itemsLeft = toCheck.length - i; break; }
+			const throttledBefore = Object.values(throttled).reduce((a, b) => a + b, 0);
 			try {
 				const sample = await details(toCheck.slice(i, i + DETAILS_BATCH), items, today);
 				debug['sample-item'] ??= sample;
@@ -301,8 +324,13 @@ export async function main() {
 				if (error instanceof FatalError) throw error;
 				status.warnings.push(`details: ${error.message}`.slice(0, 200));
 			}
-			await sleep(300);
+			// slow down if Roblox throttled us, speed back up when it doesn't
+			const wasThrottled = Object.values(throttled).reduce((a, b) => a + b, 0) > throttledBefore;
+			detailsDelay = wasThrottled ? Math.min(8000, detailsDelay * 2) : Math.max(500, detailsDelay * 0.8);
+			if ((i / DETAILS_BATCH) % 10 === 9) await save();
+			await sleep(detailsDelay);
 		}
+		phase('items checked');
 	} finally {
 		await save();
 	}
