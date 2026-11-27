@@ -1,5 +1,5 @@
 // Outfit pool fetcher v2: finds the BEST emo/goth looks on Roblox's avatars page.
-// Every run searches ~200 themed queries (results change hourly), keeps every look whose name
+// Every run searches ~400 themed queries (results change hourly), keeps every look whose name
 // matches the theme in candidates.json, scores it by how many favorites its items have, tags it
 // male/female, and rebuilds pool.json from the best ones. taste.json holds your sifting rules.
 // Needs the ROBLOX_COOKIE secret (spare account). No installs needed.
@@ -28,7 +28,12 @@ const MODIFIERS = [
 	'aesthetic', 'outfit', 'streetwear',
 ];
 const MIXES = ['emo goth', 'vkei emo', 'moe emo', 'moe vkei', 'alt goth', 'alt emo', 'goth punk'];
+// Extra male searches (male outfits are rarer, so they get their own set and run first)
+const MALE_THEMES = ['emo', 'goth', 'vkei', 'alt', 'moe'];
+const MALE_WORDS = ['boy', 'guy', 'eboy', 'dude'];
+const MALE_STYLES = ['skater', 'cool', 'cute', 'hoodie', 'chains', 'fit', 'aesthetic', 'punk', 'scene', 'dark'];
 export const QUERIES = [...new Set([
+	...MALE_THEMES.flatMap((theme) => MALE_WORDS.flatMap((word) => MALE_STYLES.map((style) => `${theme} ${word} ${style}`))),
 	...THEMES.flatMap((theme) => MODIFIERS.map((mod) => `${theme} ${mod}`.trim())),
 	...MIXES.flatMap((mix) => [mix, `${mix} boy`, `${mix} girl`]),
 ])];
@@ -133,7 +138,7 @@ class FatalError extends Error {}
 
 // Each run stops itself after BUDGET_MIN minutes and saves; the next run continues where it left off.
 const STARTED = Date.now();
-const BUDGET_MS = (Number(process.env.BUDGET_MIN) || 22) * 60000;
+const BUDGET_MS = (Number(process.env.BUDGET_MIN) || 16) * 60000;
 const outOfTime = () => Date.now() - STARTED > BUDGET_MS;
 const throttled = {}; // 429 count per endpoint, saved in status.json
 
@@ -337,7 +342,7 @@ export async function main() {
 	console.log(`Done: ${status.newCandidates} new on-theme looks. Pool: ${status.pool.male} male + ${status.pool.female} female.`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
 	main().catch((error) => {
 		console.error(`::error::${error.message}`);
 		process.exit(1);
