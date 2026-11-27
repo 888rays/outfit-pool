@@ -1,81 +1,48 @@
 {
   "bundledItems": [
     {
-      "id": 86499666,
-      "name": "Woman Torso",
+      "id": 10725826963,
+      "name": "Man Face - Head",
       "type": "Asset",
-      "assetType": 27
+      "supportsHeadShapes": true,
+      "assetType": 79
     },
     {
-      "id": 86499698,
-      "name": "Woman Right Arm",
-      "type": "Asset",
-      "assetType": 28
-    },
-    {
-      "id": 86499716,
-      "name": "Woman Left Arm",
-      "type": "Asset",
-      "assetType": 29
-    },
-    {
-      "id": 86499753,
-      "name": "Woman Left Leg",
-      "type": "Asset",
-      "assetType": 30
-    },
-    {
-      "id": 86499793,
-      "name": "Woman Right Leg",
-      "type": "Asset",
-      "assetType": 31
-    },
-    {
-      "id": 62724852,
-      "name": "Chestnut Bun",
-      "type": "Asset",
-      "assetType": 41
-    },
-    {
-      "id": 131929497,
-      "name": "Woman",
-      "type": "UserOutfit"
-    },
-    {
-      "id": 11166516435,
-      "name": "Woman Face",
-      "type": "UserOutfit"
-    },
-    {
-      "id": 10725638029,
-      "name": "Woman Face - Mood",
+      "id": 10725833199,
+      "name": "Man Face - Mood",
       "type": "Asset",
       "assetType": 78
     },
     {
-      "id": 10725626210,
-      "name": "Woman Face - Head",
+      "id": 10725837187,
+      "name": "Man Face - Brows",
       "type": "Asset",
-      "supportsHeadShapes": true,
-      "assetType": 79
+      "assetType": 76
+    },
+    {
+      "id": 11166682528,
+      "name": "Man Face",
+      "type": "UserOutfit"
     }
   ],
   "taxonomy": [
     {
-      "taxonomyId": "kfHzJwaNYM8s2CWRqYUhRa",
-      "taxonomyName": "Characters"
+      "taxonomyId": "s5NLP7BS9PRLKvUVca4XKg",
+      "taxonomyName": "Heads"
     }
   ],
-  "itemCreatedUtc": "2018-08-14T22:51:36.063Z",
-  "id": 239,
+  "itemCreatedUtc": "2022-08-26T21:20:46.35Z",
+  "id": 949,
   "itemType": "Bundle",
-  "bundleType": 1,
-  "isRecolorable": true,
-  "name": "Woman",
-  "description": "The next generation of ROBLOX.",
-  "productId": 8306895235339644,
+  "bundleType": 4,
+  "isRecolorable": false,
+  "name": "Man Face",
+  "description": "Hey there, handsome!",
+  "productId": 1876122983076566,
   "itemStatus": [],
-  "itemRestrictions": [],
+  "itemRestrictions": [
+    "Live"
+  ],
   "creatorHasVerifiedBadge": true,
   "creatorType": "User",
   "creatorTargetId": 1,
@@ -85,9 +52,9 @@
   "lowestResalePrice": 0,
   "priceStatus": "Free",
   "unitsAvailableForConsumption": 0,
-  "favoriteCount": 10339058,
+  "favoriteCount": 357119,
   "offSaleDeadline": null,
-  "collectibleItemId": "3126a07f-ccb1-4bc1-b156-3c367feda255",
+  "collectibleItemId": "98cf068d-1a78-4ac9-ae9b-be39084196d3",
   "totalQuantity": 0,
   "saleLocationType": "ShopAndAllExperiences",
   "hasResellers": false

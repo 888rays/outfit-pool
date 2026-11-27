@@ -1,18 +1,18 @@
 {
-  "lastRun": "2026-11-26T23:35:17.806Z",
-  "searches": 209,
-  "searchesOk": 209,
-  "newLooks": 3841,
-  "newCandidates": 3135,
-  "itemsChecked": 1600,
-  "itemsLeft": 2167,
+  "lastRun": "2026-11-27T00:42:56.433Z",
+  "searches": 409,
+  "searchesOk": 409,
+  "newLooks": 1466,
+  "newCandidates": 1053,
+  "itemsChecked": 500,
+  "itemsLeft": 5104,
   "throttled": {
-    "catalog.roblox.com/v1/catalog/items/details": 138
+    "catalog.roblox.com/v1/catalog/items/details": 37
   },
   "minutes": {
-    "searched": 6.1,
-    "hydrated": 7,
-    "items checked": 22.1
+    "searched": 12,
+    "hydrated": 12.4,
+    "items checked": 16.2
   },
   "warnings": [
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
@@ -22,40 +22,18 @@
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n"
   ],
-  "candidates": 4034,
+  "candidates": 5087,
   "candidatesByGender": {
-    "M": 1564,
-    "F": 1831,
-    "U": 639
+    "M": 2469,
+    "F": 1843,
+    "U": 775
   },
   "pool": {
-    "total": 399,
-    "male": 177,
-    "female": 217,
-    "unsure": 5
+    "total": 580,
+    "male": 320,
+    "female": 256,
+    "unsure": 4
   }
 }

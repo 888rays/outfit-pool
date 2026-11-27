@@ -1,118 +1,100 @@
 {
-  "name": "Striped Shadow Dancer",
+  "name": "Retro Y2K Skater Boy",
   "curator": {
-    "id": 1,
-    "type": "User",
-    "name": "Roblox",
-    "hasVerifiedBadge": true
+    "id": 43818634,
+    "type": "Group",
+    "name": "Kalyze",
+    "hasVerifiedBadge": false
   },
   "assetHashId": 0,
   "assets": [
     {
       "type": "Asset",
-      "assetType": "Pants",
+      "assetType": "Shirt",
       "order": null,
-      "id": 16849852996
-    },
-    {
-      "type": "Asset",
-      "assetType": "WaistAccessory",
-      "order": null,
-      "id": 16743569150
+      "id": 116056186244799
     },
     {
       "type": "Asset",
       "assetType": "HairAccessory",
       "order": 11,
-      "id": 13291678384
+      "id": 115222321976778
     },
     {
       "type": "Asset",
-      "assetType": "Shirt",
+      "assetType": "Pants",
       "order": null,
-      "id": 6917630517
+      "id": 93192369574902
     }
   ],
   "assetsIncludingBundleParts": [
     {
       "type": "Asset",
-      "assetType": "Pants",
+      "assetType": "Shirt",
       "order": null,
-      "id": 16849852996
-    },
-    {
-      "type": "Asset",
-      "assetType": "WaistAccessory",
-      "order": null,
-      "id": 16743569150
-    },
-    {
-      "type": "Asset",
-      "assetType": "DynamicHead",
-      "order": null,
-      "id": 14775830319
-    },
-    {
-      "type": "Asset",
-      "assetType": "RightLeg",
-      "order": null,
-      "id": 14775830269
-    },
-    {
-      "type": "Asset",
-      "assetType": "LeftLeg",
-      "order": null,
-      "id": 14775830264
-    },
-    {
-      "type": "Asset",
-      "assetType": "Torso",
-      "order": null,
-      "id": 14775830263
-    },
-    {
-      "type": "Asset",
-      "assetType": "RightArm",
-      "order": null,
-      "id": 14775830261
-    },
-    {
-      "type": "Asset",
-      "assetType": "LeftArm",
-      "order": null,
-      "id": 14775830259
+      "id": 116056186244799
     },
     {
       "type": "Asset",
       "assetType": "HairAccessory",
       "order": 11,
-      "id": 13291678384
+      "id": 115222321976778
     },
     {
       "type": "Asset",
-      "assetType": "Shirt",
+      "assetType": "Pants",
       "order": null,
-      "id": 6917630517
+      "id": 93192369574902
+    },
+    {
+      "type": "Asset",
+      "assetType": "Torso",
+      "order": null,
+      "id": 376532000
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightLeg",
+      "order": null,
+      "id": 376531703
+    },
+    {
+      "type": "Asset",
+      "assetType": "LeftLeg",
+      "order": null,
+      "id": 376531300
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightArm",
+      "order": null,
+      "id": 376531012
+    },
+    {
+      "type": "Asset",
+      "assetType": "LeftArm",
+      "order": null,
+      "id": 376530220
     }
   ],
   "bundles": [
     {
       "type": "Bundle",
       "isRecolorable": false,
-      "id": 6470
+      "id": 109
     }
   ],
-  "createdTime": "2024-06-17T12:53:35.435Z",
-  "updatedTime": "2025-05-21T00:48:52.576Z",
+  "createdTime": "2026-11-09T18:30:59.578Z",
+  "updatedTime": "2026-11-09T18:30:59.578Z",
   "type": "Look",
   "lookType": "Avatar",
-  "totalPrice": 305,
-  "totalValue": 305,
+  "totalPrice": 74,
+  "totalValue": 74,
   "owned": false,
   "favoriteCount": 0,
   "displayProperties": null,
-  "outfitId": 149614117885,
-  "priceRangeText": "5-305",
+  "outfitId": 4539791185222029,
+  "priceRangeText": "Free-74",
   "isFavorited": false,
-  "id": "5751964983775461468"
+  "id": "7576722188915573144"
 }
