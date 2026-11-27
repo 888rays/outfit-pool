@@ -1,18 +1,19 @@
 {
-  "lastRun": "2026-11-27T00:42:56.433Z",
-  "searches": 409,
-  "searchesOk": 409,
-  "newLooks": 1466,
-  "newCandidates": 1053,
-  "itemsChecked": 500,
-  "itemsLeft": 5104,
+  "themes": "emo,goth,gothic,vkei,moe,alt,alternative,scene,2000s,grunge,punk,egirl,e girl,eboy,e boy,dashie,emocore,scenecore,darkcore",
+  "lastRun": "2026-11-27T01:42:38.854Z",
+  "searches": 695,
+  "searchesOk": 695,
+  "newLooks": 4637,
+  "newCandidates": 2864,
+  "itemsChecked": 300,
+  "itemsLeft": 9128,
   "throttled": {
-    "catalog.roblox.com/v1/catalog/items/details": 37
+    "catalog.roblox.com/v1/catalog/items/details": 28
   },
   "minutes": {
-    "searched": 12,
-    "hydrated": 12.4,
-    "items checked": 16.2
+    "searched": 18.2,
+    "hydrated": 19.4,
+    "items checked": 22.2
   },
   "warnings": [
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
@@ -21,19 +22,18 @@
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n",
     "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n"
   ],
-  "candidates": 5087,
+  "candidates": 7951,
   "candidatesByGender": {
-    "M": 2469,
-    "F": 1843,
-    "U": 775
+    "M": 3266,
+    "F": 3255,
+    "U": 1430
   },
   "pool": {
-    "total": 580,
-    "male": 320,
-    "female": 256,
-    "unsure": 4
+    "total": 598,
+    "male": 288,
+    "female": 307,
+    "unsure": 3
   }
 }

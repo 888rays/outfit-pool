@@ -1,100 +1,87 @@
 {
-  "name": "Retro Y2K Skater Boy",
+  "name": "pink scene rave fit",
   "curator": {
-    "id": 43818634,
-    "type": "Group",
-    "name": "Kalyze",
+    "id": 11184154679,
+    "type": "User",
+    "name": "PurpleFlowers293",
     "hasVerifiedBadge": false
   },
   "assetHashId": 0,
   "assets": [
     {
       "type": "Asset",
-      "assetType": "Shirt",
-      "order": null,
-      "id": 116056186244799
-    },
-    {
-      "type": "Asset",
       "assetType": "HairAccessory",
-      "order": 11,
-      "id": 115222321976778
+      "order": 13,
+      "id": 135856251678029
     },
     {
       "type": "Asset",
       "assetType": "Pants",
       "order": null,
-      "id": 93192369574902
+      "id": 119071594813775
     }
   ],
   "assetsIncludingBundleParts": [
     {
       "type": "Asset",
-      "assetType": "Shirt",
-      "order": null,
-      "id": 116056186244799
-    },
-    {
-      "type": "Asset",
       "assetType": "HairAccessory",
-      "order": 11,
-      "id": 115222321976778
+      "order": 13,
+      "id": 135856251678029
     },
     {
       "type": "Asset",
       "assetType": "Pants",
       "order": null,
-      "id": 93192369574902
+      "id": 119071594813775
     },
     {
       "type": "Asset",
-      "assetType": "Torso",
+      "assetType": "DynamicHead",
       "order": null,
-      "id": 376532000
-    },
-    {
-      "type": "Asset",
-      "assetType": "RightLeg",
-      "order": null,
-      "id": 376531703
-    },
-    {
-      "type": "Asset",
-      "assetType": "LeftLeg",
-      "order": null,
-      "id": 376531300
-    },
-    {
-      "type": "Asset",
-      "assetType": "RightArm",
-      "order": null,
-      "id": 376531012
+      "id": 11308945948
     },
     {
       "type": "Asset",
       "assetType": "LeftArm",
       "order": null,
-      "id": 376530220
+      "id": 86499716
+    },
+    {
+      "type": "Asset",
+      "assetType": "RightArm",
+      "order": null,
+      "id": 86499698
+    },
+    {
+      "type": "Asset",
+      "assetType": "Torso",
+      "order": null,
+      "id": 86499666
     }
   ],
   "bundles": [
     {
       "type": "Bundle",
       "isRecolorable": false,
-      "id": 109
+      "id": 968
+    },
+    {
+      "type": "Bundle",
+      "isRecolorable": false,
+      "id": 239
     }
   ],
-  "createdTime": "2026-11-09T18:30:59.578Z",
-  "updatedTime": "2026-11-09T18:30:59.578Z",
+  "createdTime": "2026-07-13T20:42:42.039Z",
+  "updatedTime": "2026-07-13T20:42:42.039Z",
   "type": "Look",
   "lookType": "Avatar",
-  "totalPrice": 74,
-  "totalValue": 74,
+  "totalPrice": 67,
+  "totalValue": 67,
   "owned": false,
   "favoriteCount": 0,
   "displayProperties": null,
-  "outfitId": 4539791185222029,
-  "priceRangeText": "Free-74",
+  "outfitId": 6559916841038699,
+  "priceRangeText": "Free-67",
   "isFavorited": false,
-  "id": "7576722188915573144"
+  "id": "6743943240917057941"
 }

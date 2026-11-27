@@ -1,27 +1,21 @@
 {
   "bundledItems": [
     {
-      "id": 10725826963,
-      "name": "Man Face - Head",
+      "id": 133542937295929,
+      "name": "kawaii doll smug puppy eyes face - Dynamic Head",
       "type": "Asset",
-      "supportsHeadShapes": true,
+      "supportsHeadShapes": false,
       "assetType": 79
     },
     {
-      "id": 10725833199,
-      "name": "Man Face - Mood",
+      "id": 14618207727,
+      "name": "Default Mood",
       "type": "Asset",
       "assetType": 78
     },
     {
-      "id": 10725837187,
-      "name": "Man Face - Brows",
-      "type": "Asset",
-      "assetType": 76
-    },
-    {
-      "id": 11166682528,
-      "name": "Man Face",
+      "id": 2002230120057448,
+      "name": "kawaii doll smug puppy eyes face",
       "type": "UserOutfit"
     }
   ],
@@ -31,30 +25,29 @@
       "taxonomyName": "Heads"
     }
   ],
-  "itemCreatedUtc": "2022-08-26T21:20:46.35Z",
-  "id": 949,
+  "itemCreatedUtc": "2025-12-14T13:26:57.862Z",
+  "id": 224139246682823,
   "itemType": "Bundle",
   "bundleType": 4,
   "isRecolorable": false,
-  "name": "Man Face",
-  "description": "Hey there, handsome!",
-  "productId": 1876122983076566,
+  "name": "kawaii doll smug puppy eyes face",
+  "description": "thank you so much for buying! ♡\n(..◜ᴗ◝..) Join fading for more cute items and clothes!\n\n🎀 made by s2ouls",
+  "productId": 3356783568438517,
   "itemStatus": [],
   "itemRestrictions": [
     "Live"
   ],
   "creatorHasVerifiedBadge": true,
-  "creatorType": "User",
-  "creatorTargetId": 1,
-  "creatorName": "Roblox",
-  "price": 0,
-  "lowestPrice": 0,
+  "creatorType": "Group",
+  "creatorTargetId": 10529306,
+  "creatorName": "fading",
+  "price": 70,
+  "lowestPrice": 70,
   "lowestResalePrice": 0,
-  "priceStatus": "Free",
   "unitsAvailableForConsumption": 0,
-  "favoriteCount": 357119,
+  "favoriteCount": 31717,
   "offSaleDeadline": null,
-  "collectibleItemId": "98cf068d-1a78-4ac9-ae9b-be39084196d3",
+  "collectibleItemId": "6a953245-dacc-41b8-b56a-3c2b931d696e",
   "totalQuantity": 0,
   "saleLocationType": "ShopAndAllExperiences",
   "hasResellers": false
