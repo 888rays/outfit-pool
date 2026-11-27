@@ -1,23 +1,15 @@
 {
   "themes": "emo,goth,gothic,vkei,moe,alt,alternative,scene,2000s,grunge,punk,egirl,e girl,eboy,e boy,dashie,emocore,scenecore,darkcore",
-  "lastRun": "2026-11-27T02:54:30.015Z",
+  "lastRun": "2026-11-27T10:57:20.030Z",
   "searches": 776,
-  "searchesOk": 776,
-  "newLooks": 3151,
-  "newCandidates": 728,
-  "itemsChecked": 100,
-  "itemsLeft": 10600,
-  "throttled": {
-    "catalog.roblox.com/v1/catalog/items/details": 3
-  },
-  "minutes": {
-    "searched": 21,
-    "hydrated": 21.9,
-    "items checked": 22.1
-  },
-  "warnings": [
-    "details: 429 from https://catalog.roblox.com/v1/catalog/items/details: {\"errors\":[{\"code\":0,\"message\":\"\"}]}\n"
-  ],
+  "searchesOk": 0,
+  "newLooks": 0,
+  "newCandidates": 0,
+  "itemsChecked": 0,
+  "itemsLeft": 0,
+  "throttled": {},
+  "minutes": {},
+  "warnings": [],
   "candidates": 8679,
   "candidatesByGender": {
     "M": 3657,
