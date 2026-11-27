@@ -1,5 +1,5 @@
 // Outfit pool fetcher v2: finds the BEST emo/goth looks on Roblox's avatars page.
-// Every run searches ~400 themed queries (results change hourly), keeps every look whose name
+// Every run searches ~550 themed queries (results change hourly), keeps every look whose name
 // matches the theme in candidates.json, scores it by how many favorites its items have, tags it
 // male/female, and rebuilds pool.json from the best ones. taste.json holds your sifting rules.
 // Needs the ROBLOX_COOKIE secret (spare account). No installs needed.
@@ -9,11 +9,11 @@ import { pathToFileURL } from 'node:url';
 const COOKIE = process.env.ROBLOX_COOKIE;
 const PER_GENDER = Math.max(50, Number(process.env.PER_GENDER) || 1000);
 const MAX_PER_CREATOR = Math.max(1, Number(process.env.MAX_PER_CREATOR) || 5);
-const MIN_SCORE = Number(process.env.MIN_SCORE ?? 50);
+const MIN_SCORE = Number(process.env.MIN_SCORE ?? 200); // items need 200+ favorites (you keep 30-47% of those)
 
 const WIDGETS = 'https://apis.roblox.com/marketplace-widgets/v1/widgets';
 const DETAILS = 'https://catalog.roblox.com/v1/catalog/items/details';
-const SEARCH_DELAY_MS = 1300; // search limit is 60/minute
+const SEARCH_DELAY_MS = 1100; // search limit is 60/minute
 const HYDRATE_BATCH = 25;
 const DETAILS_BATCH = 100;
 const REFRESH_DAYS = 14; // re-check item favorites this often
@@ -21,7 +21,12 @@ const REFRESH_LIMIT = 3000; // max stale items re-checked per run
 
 // ---------- theme, gender and scoring (pure, tested offline) ----------
 
-export const THEMES = ['emo', 'goth', 'gothic', 'vkei', 'moe', 'alt', 'alternative'];
+// An outfit's name must contain one of these words to count as on-theme
+export const THEMES = ['emo', 'goth', 'gothic', 'vkei', 'moe', 'alt', 'alternative', 'scene', '2000s', 'grunge', 'punk',
+	'egirl', 'e girl', 'eboy', 'e boy', 'dashie', 'emocore', 'scenecore', 'darkcore'];
+const SEARCH_THEMES = ['emo', 'goth', 'gothic', 'vkei', 'moe', 'alt', 'alternative', 'scene', 'grunge', 'punk'];
+const EXTRA_THEMES = ['egirl', 'eboy', 'dashie', '2000s emo', '2000s goth', '2000s scene', 'emocore', 'scenecore', 'darkcore',
+	'mall goth', 'trad goth'];
 const MODIFIERS = [
 	'', 'boy', 'guy', 'male', 'man', 'eboy', 'boy y2k', 'boy cheap', 'boy anime', 'boy black', 'boy dashie', 'boy grunge',
 	'girl', 'girl y2k', 'girl cheap', 'girl anime', 'y2k', 'cheap', 'black', 'dark', 'dashie', 'grunge', 'punk', 'scene',
@@ -32,9 +37,17 @@ const MIXES = ['emo goth', 'vkei emo', 'moe emo', 'moe vkei', 'alt goth', 'alt e
 const MALE_THEMES = ['emo', 'goth', 'vkei', 'alt', 'moe'];
 const MALE_WORDS = ['boy', 'guy', 'eboy', 'dude'];
 const MALE_STYLES = ['skater', 'cool', 'cute', 'hoodie', 'chains', 'fit', 'aesthetic', 'punk', 'scene', 'dark'];
+// Item/style searches surface different popular looks than "emo boy" over and over; girl-focused ones too
+const ITEM_THEMES = ['emo', 'goth', 'vkei', 'alt', 'moe'];
+const ITEMS = ['wolf cut', 'headphones', 'chains', 'corset', 'platform boots', 'skirt', 'fishnet', 'cross', 'skull', 'spikes',
+	'bat wings', 'cat ears', 'choker', 'hoodie', 'striped', 'baggy jeans', 'leg warmers', 'bandaid', 'piercings', 'mask'];
+const GIRL_STYLES = ['girl skirt', 'girl corset', 'girl pigtails', 'egirl', 'girl cute', 'girl dark', 'girl black', 'girl fit',
+	'girl outfit', 'girl aesthetic'];
 export const QUERIES = [...new Set([
+	...ITEM_THEMES.flatMap((theme) => [...ITEMS, ...GIRL_STYLES].map((item) => `${theme} ${item}`)),
 	...MALE_THEMES.flatMap((theme) => MALE_WORDS.flatMap((word) => MALE_STYLES.map((style) => `${theme} ${word} ${style}`))),
-	...THEMES.flatMap((theme) => MODIFIERS.map((mod) => `${theme} ${mod}`.trim())),
+	...SEARCH_THEMES.flatMap((theme) => MODIFIERS.map((mod) => `${theme} ${mod}`.trim())),
+	...EXTRA_THEMES.flatMap((theme) => ['', 'boy', 'girl', 'fit', 'outfit'].map((mod) => `${theme} ${mod}`.trim())),
 	...MIXES.flatMap((mix) => [mix, `${mix} boy`, `${mix} girl`]),
 ])];
 
@@ -83,12 +96,18 @@ export function buildPool(cands, items, taste) {
 	const liked = new Set((taste.likedCreators || []).map((c) => c.toLowerCase()));
 	const rejected = new Set((taste.rejected || []).map(Number));
 	const approved = new Set((taste.approved || []).map(Number));
+	const pending = new Set((taste.pending || []).map(Number)); // loaded in Studio, not sorted yet
+
+	// Same creator + same outfit name as one you deleted = a recolor of it, so it's skipped too
+	const rejectedNames = new Set();
+	for (const cand of Object.values(cands)) if (rejected.has(cand.o)) rejectedNames.add(`${cand.c}|${norm(cand.n)}`);
 
 	const rows = [];
 	for (const [lookId, cand] of Object.entries(cands)) {
 		const isApproved = approved.has(cand.o);
 		const creator = cand.c.toLowerCase();
-		if (!isApproved && (rejected.has(cand.o) || blockCreators.has(creator) || hasWord(norm(cand.n), blockWords))) continue;
+		if (!isApproved && (rejected.has(cand.o) || pending.has(cand.o) || rejectedNames.has(`${cand.c}|${norm(cand.n)}`)
+			|| blockCreators.has(creator) || hasWord(norm(cand.n), blockWords))) continue;
 		let score = scoreOf(cand, items);
 		if (liked.has(creator)) score = Math.round(score * 1.5);
 		if (!isApproved && score < MIN_SCORE) continue;
@@ -138,7 +157,7 @@ class FatalError extends Error {}
 
 // Each run stops itself after BUDGET_MIN minutes and saves; the next run continues where it left off.
 const STARTED = Date.now();
-const BUDGET_MS = (Number(process.env.BUDGET_MIN) || 16) * 60000;
+const BUDGET_MS = (Number(process.env.BUDGET_MIN) || 22) * 60000;
 const outOfTime = () => Date.now() - STARTED > BUDGET_MS;
 const throttled = {}; // 429 count per endpoint, saved in status.json
 
@@ -232,9 +251,11 @@ export async function main() {
 	const today = Math.floor(Date.now() / 86400000);
 	const taste = await load('taste.json', {});
 	const items = await load('items.json', {});
-	const seen = new Set(await load('seen.json', []));
+	let seen = new Set(await load('seen.json', []));
+	const themeKey = THEMES.join(',');
+	const previous = await load('status.json', {});
 	let cands = await load('candidates.json', null);
-	const status = { lastRun: new Date().toISOString(), searches: QUERIES.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, itemsLeft: 0, throttled, minutes: {}, warnings: [] };
+	const status = { themes: themeKey, lastRun: new Date().toISOString(), searches: QUERIES.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, itemsLeft: 0, throttled, minutes: {}, warnings: [] };
 	const phase = (name) => { status.minutes[name] = Math.round((Date.now() - STARTED) / 6000) / 10; console.log(`[${status.minutes[name]} min] ${name}`); };
 	const debug = {};
 
@@ -247,6 +268,9 @@ export async function main() {
 			if (onTheme(o.name)) cands[o.lookId] = { o: o.outfitId, n: o.name, c: o.curator || '', a: o.assets.map((a) => [a.id, a.type, a.order]), b: o.bundles || [], f: today };
 		}
 	}
+
+	// New theme words: looks skipped before (not on-theme then) may count now, so let them be checked again
+	if (previous.themes !== themeKey) seen = new Set(Object.keys(cands));
 
 	const save = async () => {
 		const pool = buildPool(cands, items, taste);
