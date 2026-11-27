@@ -255,7 +255,9 @@ export async function main() {
 	const themeKey = THEMES.join(',');
 	const previous = await load('status.json', {});
 	let cands = await load('candidates.json', null);
-	const status = { themes: themeKey, lastRun: new Date().toISOString(), searches: QUERIES.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, itemsLeft: 0, throttled, minutes: {}, warnings: [] };
+	// Creators whose outfits you kept the most are searched first: their other looks tend to fit your taste
+	const queries = [...new Set([...(taste.likedCreators || []), ...QUERIES])];
+	const status = { themes: themeKey, lastRun: new Date().toISOString(), searches: queries.length, searchesOk: 0, newLooks: 0, newCandidates: 0, itemsChecked: 0, itemsLeft: 0, throttled, minutes: {}, warnings: [] };
 	const phase = (name) => { status.minutes[name] = Math.round((Date.now() - STARTED) / 6000) / 10; console.log(`[${status.minutes[name]} min] ${name}`); };
 	const debug = {};
 
@@ -294,7 +296,7 @@ export async function main() {
 	try {
 		// 1) Search
 		const pending = new Set();
-		for (const query of QUERIES) {
+		for (const query of queries) {
 			if (outOfTime()) break;
 			try {
 				let fresh = 0;
