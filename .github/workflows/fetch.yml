@@ -2,7 +2,7 @@ name: Fetch outfits
 
 on:
   schedule:
-    - cron: "23 */2 * * *" # every 2 hours: the avatars page shows new results over time
+    - cron: "23 * * * *" # every hour: the avatars page shows new results over time
   workflow_dispatch:
     inputs:
       per_gender:
