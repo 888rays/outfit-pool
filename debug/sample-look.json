@@ -1,87 +1,148 @@
 {
-  "name": "pink scene rave fit",
+  "name": "Dutch Van Der Linde",
   "curator": {
-    "id": 11184154679,
+    "id": 1137114471,
     "type": "User",
-    "name": "PurpleFlowers293",
+    "name": "f4rvm",
     "hasVerifiedBadge": false
   },
   "assetHashId": 0,
   "assets": [
     {
       "type": "Asset",
+      "assetType": "Hat",
+      "order": null,
+      "id": 119628812050684
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 17827837541
+    },
+    {
+      "type": "Asset",
       "assetType": "HairAccessory",
-      "order": 13,
-      "id": 135856251678029
+      "order": 11,
+      "id": 17258461994
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 17006982983
+    },
+    {
+      "type": "Asset",
+      "assetType": "Shirt",
+      "order": null,
+      "id": 14796343501
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 13631218253
+    },
+    {
+      "type": "Asset",
+      "assetType": "HairAccessory",
+      "order": 11,
+      "id": 13000732412
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 12352334330
     },
     {
       "type": "Asset",
       "assetType": "Pants",
       "order": null,
-      "id": 119071594813775
+      "id": 8754688241
     }
   ],
   "assetsIncludingBundleParts": [
     {
       "type": "Asset",
-      "assetType": "HairAccessory",
-      "order": 13,
-      "id": 135856251678029
-    },
-    {
-      "type": "Asset",
-      "assetType": "Pants",
+      "assetType": "Hat",
       "order": null,
-      "id": 119071594813775
+      "id": 119628812050684
     },
     {
       "type": "Asset",
       "assetType": "DynamicHead",
       "order": null,
-      "id": 11308945948
+      "id": 77106077196892
     },
     {
       "type": "Asset",
-      "assetType": "LeftArm",
+      "assetType": "FaceAccessory",
       "order": null,
-      "id": 86499716
+      "id": 17827837541
     },
     {
       "type": "Asset",
-      "assetType": "RightArm",
-      "order": null,
-      "id": 86499698
+      "assetType": "HairAccessory",
+      "order": 11,
+      "id": 17258461994
     },
     {
       "type": "Asset",
-      "assetType": "Torso",
+      "assetType": "FaceAccessory",
       "order": null,
-      "id": 86499666
+      "id": 17006982983
+    },
+    {
+      "type": "Asset",
+      "assetType": "Shirt",
+      "order": null,
+      "id": 14796343501
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 13631218253
+    },
+    {
+      "type": "Asset",
+      "assetType": "HairAccessory",
+      "order": 11,
+      "id": 13000732412
+    },
+    {
+      "type": "Asset",
+      "assetType": "FaceAccessory",
+      "order": null,
+      "id": 12352334330
+    },
+    {
+      "type": "Asset",
+      "assetType": "Pants",
+      "order": null,
+      "id": 8754688241
     }
   ],
   "bundles": [
     {
       "type": "Bundle",
       "isRecolorable": false,
-      "id": 968
-    },
-    {
-      "type": "Bundle",
-      "isRecolorable": false,
-      "id": 239
+      "id": 893295
     }
   ],
-  "createdTime": "2026-07-13T20:42:42.039Z",
-  "updatedTime": "2026-07-13T20:42:42.039Z",
+  "createdTime": "2024-11-27T07:19:42.291Z",
+  "updatedTime": "2024-11-27T07:19:42.291Z",
   "type": "Look",
   "lookType": "Avatar",
-  "totalPrice": 67,
-  "totalValue": 67,
+  "totalPrice": 655,
+  "totalValue": 655,
   "owned": false,
   "favoriteCount": 0,
   "displayProperties": null,
-  "outfitId": 6559916841038699,
-  "priceRangeText": "Free-67",
+  "outfitId": 4447650155035146,
+  "priceRangeText": "5-655",
   "isFavorited": false,
-  "id": "6743943240917057941"
+  "id": "6675519688213790844"
 }

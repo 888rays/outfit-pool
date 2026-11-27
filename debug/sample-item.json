@@ -1,21 +1,21 @@
 {
   "bundledItems": [
     {
-      "id": 133542937295929,
-      "name": "kawaii doll smug puppy eyes face - Dynamic Head",
-      "type": "Asset",
-      "supportsHeadShapes": false,
-      "assetType": 79
-    },
-    {
       "id": 14618207727,
       "name": "Default Mood",
       "type": "Asset",
       "assetType": 78
     },
     {
-      "id": 2002230120057448,
-      "name": "kawaii doll smug puppy eyes face",
+      "id": 118579338118515,
+      "name": "Sleek Displeased v2 - Dynamic Head",
+      "type": "Asset",
+      "supportsHeadShapes": false,
+      "assetType": 79
+    },
+    {
+      "id": 2775370134817875,
+      "name": "Sleek Displeased v2",
       "type": "UserOutfit"
     }
   ],
@@ -25,29 +25,29 @@
       "taxonomyName": "Heads"
     }
   ],
-  "itemCreatedUtc": "2025-12-14T13:26:57.862Z",
-  "id": 224139246682823,
+  "itemCreatedUtc": "2025-09-27T22:32:40.113Z",
+  "id": 124445251150836,
   "itemType": "Bundle",
   "bundleType": 4,
   "isRecolorable": false,
-  "name": "kawaii doll smug puppy eyes face",
-  "description": "thank you so much for buying! ♡\n(..◜ᴗ◝..) Join fading for more cute items and clothes!\n\n🎀 made by s2ouls",
-  "productId": 3356783568438517,
+  "name": "Sleek Displeased v2",
+  "description": "sista EUGHH!!\n\nsee the 4catalog https://www.roblox.com/catalog?Category=1&CreatorName=4cider&salesTypeFilter=1",
+  "productId": 2651088597834454,
   "itemStatus": [],
   "itemRestrictions": [
     "Live"
   ],
-  "creatorHasVerifiedBadge": true,
-  "creatorType": "Group",
-  "creatorTargetId": 10529306,
-  "creatorName": "fading",
+  "creatorHasVerifiedBadge": false,
+  "creatorType": "User",
+  "creatorTargetId": 394776621,
+  "creatorName": "42ider",
   "price": 70,
   "lowestPrice": 70,
   "lowestResalePrice": 0,
   "unitsAvailableForConsumption": 0,
-  "favoriteCount": 31717,
+  "favoriteCount": 66185,
   "offSaleDeadline": null,
-  "collectibleItemId": "6a953245-dacc-41b8-b56a-3c2b931d696e",
+  "collectibleItemId": "0ddb08f7-13be-4af4-a8e4-13463a2d0183",
   "totalQuantity": 0,
   "saleLocationType": "ShopAndAllExperiences",
   "hasResellers": false
